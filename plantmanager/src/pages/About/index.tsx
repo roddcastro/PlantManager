@@ -1,4 +1,4 @@
-import React from 'react'
+import React,{useState} from 'react'
 import { useNavigation } from '@react-navigation/native'
 import { 
     Container,
@@ -10,10 +10,18 @@ import {
 import { ButtonConfirm } from '../../components/ButtonConfirm'
 
 export function About() {
+    const [name, setName] = useState<string>("")
+    const [disable, setDisable] = useState<boolean>(true)
     const navigation = useNavigation()
 
     function handleAbout(){
-        navigation.navigate('Ready')
+        if(name !== "") navigation.navigate("Ready", {name: name})
+    }
+
+    function onChangeValue(value: string): void{
+        if(value !== "") setDisable(false)
+
+        setName(value)
     }
     return (
         <Container>
@@ -25,10 +33,12 @@ export function About() {
 
                 <Input 
                     placeholder= 'Digite seu nome'
+                    value={name} 
+                    onChangeText={(value) => onChangeValue(value)}
                     blurOnSubmit
                 />
 
-                <ButtonConfirm onPress={handleAbout} />
+                <ButtonConfirm disabled={disable} onPress={() => {handleAbout()}} />
             </Content>
         </Container>
     )

@@ -1,8 +1,8 @@
 import styled from 'styled-components/native'
 
 export const Container = styled.View`
-    width: 50px;
-    height: 50px;
+    width: 70px;
+    height: 70px;
     border-radius: 50px;
     align-items: center;
     justify-content: center;
@@ -10,8 +10,8 @@ export const Container = styled.View`
 `
 
 export const AvatarImage = styled.Image`
-    width: 46px;
-    height: 46px;
+    width: 70px;
+    height: 70px;
     border-radius: 50px;
     border-width: 2px;
     border-color: ${({ theme }) => theme.colors.green}

@@ -1,31 +1,63 @@
 import React from 'react'
+import { useRoute } from '@react-navigation/native'
 import { Avatar } from '../../components/Avatar'
 import { 
     Container,
+    Header,
     Content,
-    User,
     Grettings,
     UserName,
-    Message
+    Message,
+    MessageBox,
+    RoomsContainer,
+    Room,
+    NameRoom
 } from './styles'
 
 export function Profile(){
+    const route = useRoute();
     return(
         <Container>
             <Content>
-            <Avatar urlImage='https://avatars.githubusercontent.com/u/50750983?v=4' />
-                <User>
+                <Header>
+                <Avatar urlImage='https://avatars.githubusercontent.com/u/50750983?v=4' />
                     <Grettings>
-                        Olá,
+                        Olá, {'\n'}
                     </Grettings>
                     <UserName>
-                        Rodrigo
+                        {route.params?.name}
                     </UserName>
-                </User>
-                <Message>
-                    Em qual ambiente {'\n'}
-                    você quer colocar sua planta?
-                </Message>
+                </Header>
+
+                <MessageBox>
+                    <Message>
+                        Em qual ambiente {'\n'}
+                        você quer colocar sua planta?
+                    </Message>
+                </MessageBox>
+
+                <RoomsContainer>
+                    <Room>
+                        <NameRoom>
+                            Sala
+                        </NameRoom>
+                    </Room>
+                    <Room>
+                        <NameRoom>
+                            Quarto
+                        </NameRoom>
+                    </Room>
+                    <Room>
+                        <NameRoom>
+                            Cozinha
+                        </NameRoom>
+                    </Room>
+                    <Room>
+                        <NameRoom>
+                            Banheiro
+                        </NameRoom>
+                    </Room>
+                </RoomsContainer>
             </Content>
         </Container>
     )
